@@ -1,0 +1,142 @@
+body {
+	background: #DFE6ED;
+
+}
+
+h2{
+	font-family: 'Roboto', sans-serif;
+	color: white;
+	text-align: center;
+}
+span{
+	font-family: 'Roboto', sans-serif;
+	opacity: 0.7;
+	margin: 5px;
+}
+.done_tasks{
+	display: block;
+	font-family: 'Roboto', sans-serif;
+	opacity: 0.7;
+	text-align: center;
+}
+
+p {
+	display: inline-block;
+	font-family: 'Roboto', sans-serif;
+	margin-top: 10px;
+}
+
+.main {
+	background: #B2ACFA;
+	margin-top: -80px;
+	width: 450px;
+	margin-right: auto;
+	margin-left: auto;
+	border: 2px solid #6558F5;
+	min-height: 450px;
+	max-height: 450px;
+	overflow-y: scroll;
+	border-radius: 7px;
+
+}
+
+.main::-webkit-scrollbar {
+    width: 0px;
+}
+
+.task {
+	padding-top: 10;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.checkbox {
+	display: inline-block;
+}
+
+.checkbox input{
+	width: 25px;
+	height: 25px;
+}
+
+p, .delete{
+	position: relative;
+	bottom: 7px;
+	display: inline-block;
+}
+
+.delete input{
+	background: #6558F5;
+	border: 0px;
+	opacity: 0.7;
+	border-radius: 50%;
+
+}
+
+.delete input:hover {
+	opacity: 1;
+}
+
+.task form, 
+.checkbox form,
+ {
+	display: inline-block;
+}
+
+
+.task-add1{
+	display: block;
+	width: 330px;
+	height: 30px;
+	margin-right: auto;
+	margin-left: auto;	
+	margin-top: 11px;
+	border: 0px;
+	border-radius: 5px 5px 0px 0px;
+}
+.task-add2{
+	display: block;
+	width: 333px;
+	margin-right: auto;
+	margin-left: auto;	
+	border: 0px;
+	border-radius: 0px 0px 5px 5px ;
+}
+
+.task-add3{
+	display: block;
+	width: 90px;
+	height: 30px;
+	color: white;
+	margin-right: auto;
+	margin-left: auto;	
+	margin-top: 2px;
+	margin-bottom: 11px;
+	border: 0px;
+	background: #6558F5;
+	border-radius: 3px;
+}
+
+.task-add3:hover{
+	background: #623AF2;
+}
+
+.task-add1:focus,
+.task-add2:focus{
+	box-shadow: 3px 3px 3px #623AF2;
+}
+.add-task {
+	position: relative;
+	background: #B2ACFA;
+	border-top: 0px;
+	border: 2px solid #6558F5;
+	border-radius: 7px;
+	width: 450px;
+	top: 492px;
+	margin-right: auto;
+	margin-left: auto;	
+}
+
+.hidden {
+	opacity: 0;
+}

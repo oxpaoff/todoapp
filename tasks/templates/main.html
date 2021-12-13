@@ -1,0 +1,72 @@
+{% load static %}
+{% load custom_tags %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ToDoApp</title>
+	<link rel="stylesheet" href="{% static 'css/styles.css' %}" type="text/css" media="all">
+	<link rel="shortcut icon" href="https://cdn.icon-icons.com/icons2/1859/PNG/64/checklist_117966.png" width="72" height="72" type="image">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
+</head>
+<body>
+	<div class="add-task">
+		<hr class="hidden">
+		<form method="post" action="{% url "add" %}">
+			{% csrf_token %}
+			{{form.task}}			
+			{{form.deadline}}
+			<input class='task-add3' type="submit" value="ADD">
+		</form>
+	</div>
+	<div class="main">
+		<h2>TO DO LIST</h2>
+
+		<hr>
+		{% if not tasks %}
+		<span class="done_tasks">You have no tasks. Add some</span>
+		{% elif not done_all %}
+		<span class="done_tasks">{% done_tasks %} of the {% total_tasks %} tasks done!</span>
+		{% elif done_all %}
+		<span class="done_tasks">You have done all yours tasks!</span>
+		{% endif %}
+
+		{% for task in tasks %}
+		<div class="ol">
+			<div class="task">
+			<hr id='hrid'>
+			<form class="checkbox" action="{% url "done" task.pk %}" method="post">
+				{% csrf_token %}
+				<input onclick="this.form.submit();" type='checkbox' {% if task.done %}checked{% endif %}>
+			</form>
+				<p  style="display: inline-block;{% if task.done %} text-decoration: line-through{% endif %}">{{task.task}}</p>
+			<form class='delete' style="display: inline-block;" action="{% url "delete" task.pk %}" method="post">
+				{% csrf_token %}
+				<input type="submit" value="x">
+			</form>
+
+			{% if task.deadline_check %}
+			<br>
+			<span>Deadline: {{task.deadline}}
+				{% if task.days_remain %}
+			    ({{task.days_remain}})
+			    {% endif %}
+			</span>
+			{% endif %}	
+		</div>	
+		
+		{% endfor %}
+
+	
+	</div>	
+	</div>
+ <script language="javascript">
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
+        var yyyy = today.getFullYear();
+
+        today = yyyy + '-' + mm + '-' + dd;
+        $('#txtDate').attr('min',today);
+    </script>
+</body>
+</html>
